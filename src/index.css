@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Inter', sans-serif;
+  background: radial-gradient(circle at 20% 18%, rgba(216, 217, 221, 0.09), transparent 34%),
+    radial-gradient(circle at 82% 0%, rgba(181, 159, 119, 0.10), transparent 30%), #0a0a0b;
+  min-height: 100vh;
+}
+
+.card {
+  @apply rounded-2xl border border-slate-700/70 bg-panel/85 p-5 shadow-lg backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-glow;
+}
+
+.page-title {
+  @apply mb-8 text-3xl font-bold tracking-tight sm:text-4xl;
+}
+
+.page-subtitle {
+  @apply mb-10 max-w-3xl text-slate-300;
+}
+
+.btn-primary {
+  @apply inline-flex items-center rounded-xl bg-accent px-4 py-2 font-semibold text-slate-900 transition hover:bg-accent2 hover:text-white;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center rounded-xl border border-accent/70 px-4 py-2 font-semibold text-accent transition hover:bg-accent/10;
+}
