@@ -57,12 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/WebBuild.loader.js";
+      var loaderUrl = buildUrl + "/cello.loader.js";
       var config = {
-        dataUrl: buildUrl + "/WebBuild.data.br",
-        frameworkUrl: buildUrl + "/WebBuild.framework.js.br",
-        codeUrl: buildUrl + "/WebBuild.wasm.br",
-        decompressionFallback: "brotli",
+        dataUrl: buildUrl + "/cello.data",
+        frameworkUrl: buildUrl + "/cello.framework.js",
+        codeUrl: buildUrl + "/cello.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "TheClockCompany",
         productName: "Cell-O",
