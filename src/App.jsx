@@ -11,6 +11,7 @@ import BlogPage from './pages/BlogPage';
 import GalleryPage from './pages/GalleryPage';
 import SponsorsPage from './pages/SponsorsPage';
 import ContactPage from './pages/ContactPage';
+import GamePlayerPage from './pages/GamePlayerPage';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/sponsors" element={<SponsorsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/play/:slug" element={<GamePlayerPage />} />
         </Routes>
       </main>
       <Footer />

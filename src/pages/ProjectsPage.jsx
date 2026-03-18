@@ -1,14 +1,23 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 import SectionHeader from '../components/SectionHeader';
 import { fetchCsv } from '../utils/csv';
+import { getGamePlayerRoute, normalizeGameBuildPath } from '../utils/games';
+
+const normalizeProject = (project) => ({
+  ...project,
+  image: project.image || '/images/project-cello.svg',
+  play: normalizeGameBuildPath(project.play),
+  playerRoute: getGamePlayerRoute(project.play),
+});
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     fetchCsv('/data/projects.csv')
-      .then(setProjects)
+      .then((rows) => setProjects(rows.map(normalizeProject)))
       .catch((error) => console.error(error));
   }, []);
 
@@ -25,12 +34,20 @@ const ProjectsPage = () => {
             <h3 className="text-xl font-semibold">{project.title}</h3>
             <p className="mt-2 text-sm text-slate-300">{project.description}</p>
             <div className="mt-4 flex gap-3">
-              <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
-                GitHub
-              </a>
-              <a href={project.play} target="_blank" rel="noreferrer" className="btn-primary text-sm">
-                Play
-              </a>
+              {project.github ? (
+                <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
+                  GitHub
+                </a>
+              ) : null}
+              {project.playerRoute ? (
+                <Link to={project.playerRoute} className="btn-primary text-sm">
+                  Play
+                </Link>
+              ) : project.play ? (
+                <a href={project.play} target="_blank" rel="noreferrer" className="btn-primary text-sm">
+                  Play
+                </a>
+              ) : null}
             </div>
           </Card>
         ))}

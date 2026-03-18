@@ -21,6 +21,8 @@ public/
   data/
   images/
   posts/
+  games/
+docs/
 scripts/
 ```
 
@@ -115,6 +117,14 @@ Example:
 }
 ```
 
+## Hosting Unity WebGL Games
+
+No backend is required. Unity WebGL builds can be hosted statically.
+
+See full instructions in:
+
+`docs/UNITY_WEBGL.md`
+
 ## Local Development
 
 ```bash
@@ -151,7 +161,4 @@ This parses and prints the CSV as formatted JSON.
 - Keep CSV headers unchanged.
 - Dates in `events.csv` should use ISO format (`YYYY-MM-DD`).
 - Content can be fully managed from GitHub by editing files under `public/data` and `public/posts`.
-## Logo Setup
-
-- Add the official club logo as public/images/studio-centauri-logo.png.
-- The navbar will automatically display it.
+- Add the official club logo as `public/images/studio-centauri-logo.png`. The navbar will display it automatically.
