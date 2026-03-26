@@ -4,14 +4,12 @@ import { NavLink } from 'react-router-dom';
 const navItems = [
   ['/', 'Home'],
   ['/projects', 'Projects'],
-  ['/team', 'Team'],
-  ['/rendermondays', 'RenderMondays'],
+  ['/contact', 'Contact Us'],
   ['/events', 'Events'],
   ['/learning', 'Learning'],
   ['/blog', 'Blog'],
   ['/gallery', 'Gallery'],
   ['/sponsors', 'Sponsors'],
-  ['/contact', 'Contact'],
 ];
 
 const Navbar = () => {
@@ -23,17 +21,14 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-3">
           <NavLink to="/" className="flex items-center gap-3 leading-tight" onClick={() => setOpen(false)}>
             <img
-              src="/images/studio-centauri-logo.png"
-              alt="Studio Centauri Logo"
+              src="/images/Logo.webp"
+              alt="Game Development Club Logo"
               className="h-10 w-10 rounded-full border border-slate-700/80 object-cover"
               loading="lazy"
-              onError={(event) => {
-                event.currentTarget.style.display = 'none';
-              }}
             />
             <div>
-              <p className="text-lg font-bold tracking-wide text-accent">Studio Centauri</p>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">Game Development Club, IIT Kanpur</p>
+              <p className="text-lg font-bold tracking-wide text-accent">Game Development Club</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-slate-400">IIT Kanpur</p>
             </div>
           </NavLink>
           <button

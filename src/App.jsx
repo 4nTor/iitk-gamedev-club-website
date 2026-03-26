@@ -4,13 +4,11 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import TeamPage from './pages/TeamPage';
-import RenderMondaysPage from './pages/RenderMondaysPage';
 import EventsPage from './pages/EventsPage';
 import LearningPage from './pages/LearningPage';
 import BlogPage from './pages/BlogPage';
 import GalleryPage from './pages/GalleryPage';
 import SponsorsPage from './pages/SponsorsPage';
-import ContactPage from './pages/ContactPage';
 import GamePlayerPage from './pages/GamePlayerPage';
 
 const App = () => {
@@ -22,13 +20,12 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/team" element={<TeamPage />} />
-          <Route path="/rendermondays" element={<RenderMondaysPage />} />
+          <Route path="/contact" element={<TeamPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/learning" element={<LearningPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/sponsors" element={<SponsorsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="/play/:slug" element={<GamePlayerPage />} />
         </Routes>
       </main>

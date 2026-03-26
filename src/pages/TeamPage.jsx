@@ -3,43 +3,166 @@ import Card from '../components/Card';
 import SectionHeader from '../components/SectionHeader';
 import { fetchCsv } from '../utils/csv';
 
+const EmptyState = ({ message }) => (
+  <Card>
+    <p className="text-sm text-slate-400">{message}</p>
+  </Card>
+);
+
+const normalizePhotoPath = (photo = '') => (photo ? photo.replace(/^\/public/, '') : '/images/team-rohan.svg');
+
+const ContactItem = ({ label, value, href }) => {
+  if (!value) {
+    return null;
+  }
+
+  return href ? (
+    <a href={href} target="_blank" rel="noreferrer" className="text-sm text-slate-200 transition hover:text-accent2">
+      {label}
+    </a>
+  ) : (
+    <p className="text-sm text-slate-200">{label}: {value}</p>
+  );
+};
+
+const PersonHoverCard = ({ name, post, photo, linkedin, github, instagram, email, phone, subtitle }) => (
+  <Card className="group relative min-h-72 overflow-hidden border-slate-700 bg-panel/90 p-0 hover:-translate-y-1">
+    <div className="absolute inset-0">
+      <img src={normalizePhotoPath(photo)} alt={name} loading="lazy" className="h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,11,0.08),rgba(10,10,11,0.92))]" />
+    </div>
+    <div className="relative flex h-full min-h-72 flex-col justify-end p-6">
+      {subtitle ? <p className="mb-2 text-xs uppercase tracking-[0.18em] text-slate-300">{subtitle}</p> : null}
+      <h3 className="text-2xl font-semibold text-white">{name}</h3>
+      <p className="mt-1 text-sm uppercase tracking-[0.14em] text-accent">{post}</p>
+    </div>
+    <div className="absolute inset-0 z-10 flex flex-col justify-end bg-black/90 p-6 opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+      <p className="mb-3 text-xs uppercase tracking-[0.18em] text-slate-500">Connect</p>
+      <div className="flex flex-col gap-2">
+        <ContactItem label="LinkedIn" value={linkedin} href={linkedin} />
+        <ContactItem label="GitHub" value={github} href={github} />
+        <ContactItem label="Instagram" value={instagram} href={instagram} />
+        <ContactItem label="Email" value={email} href={email ? `mailto:${email}` : ''} />
+        {phone ? <p className="text-sm text-slate-200">Phone: {phone}</p> : null}
+      </div>
+    </div>
+  </Card>
+);
+
+const SecretaryHoverCard = ({ name, post, photo, linkedin, github, instagram, email }) => (
+  <div className="group relative aspect-square overflow-hidden rounded-full border border-slate-700 bg-panel/90 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-glow">
+    <img
+      src={normalizePhotoPath(photo)}
+      alt={name}
+      loading="lazy"
+      className="h-full w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-50 group-focus-within:scale-105 group-focus-within:brightness-50"
+    />
+    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,11,0.08),rgba(10,10,11,0.82))] transition duration-300 group-hover:opacity-90 group-focus-within:opacity-90" />
+    <div className="absolute inset-x-0 bottom-0 z-[1] px-5 pb-6 text-center transition duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
+      <h3 className="text-lg font-semibold text-white">{name}</h3>
+      <p className="mt-1 text-xs uppercase tracking-[0.14em] text-accent">{post}</p>
+    </div>
+    <div className="absolute inset-0 z-10 flex flex-col items-center justify-end bg-black/40 p-6 text-center opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+      <p className="mb-3 text-xs uppercase tracking-[0.18em] text-slate-400">Connect</p>
+      <div className="flex flex-col gap-2">
+        <ContactItem label="LinkedIn" value={linkedin} href={linkedin} />
+        <ContactItem label="GitHub" value={github} href={github} />
+        <ContactItem label="Instagram" value={instagram} href={instagram} />
+        <ContactItem label="Email" value={email} href={email ? `mailto:${email}` : ''} />
+      </div>
+    </div>
+  </div>
+);
+
 const TeamPage = () => {
-  const [members, setMembers] = useState([]);
+  const [coordinators, setCoordinators] = useState([]);
+  const [secretaries, setSecretaries] = useState([]);
+  const [pastCoordinators, setPastCoordinators] = useState([]);
 
   useEffect(() => {
     fetchCsv('/data/team.csv')
-      .then(setMembers)
+      .then(setCoordinators)
+      .catch((error) => console.error(error));
+
+    fetchCsv('/data/secretaries.csv')
+      .then(setSecretaries)
+      .catch((error) => console.error(error));
+
+    fetchCsv('/data/past-coordinators.csv')
+      .then(setPastCoordinators)
       .catch((error) => console.error(error));
   }, []);
 
   return (
-    <div>
+    <div className="space-y-12">
       <SectionHeader
-        title="Core Team"
-        subtitle="Team cards are generated directly from /public/data/team.csv so updates can happen from GitHub without code edits."
+        title="Contact Us"
+        subtitle="Meet the current coordinators, club secretaries, and previous-tenure coordinators. Update these sections from the CSV files in /public/data."
       />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {members.map((member) => (
-          <Card key={member.name} className="text-center">
-            <img
-              src={member.photo}
-              alt={member.name}
-              loading="lazy"
-              className="mx-auto mb-4 h-28 w-28 rounded-full border border-slate-600 object-cover"
+
+      <section>
+        <h2 className="mb-5 text-2xl font-semibold">Current Coordinators</h2>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {coordinators.map((member) => (
+            <PersonHoverCard
+              key={member.name}
+              name={member.name}
+              post={member.role}
+              photo={member.photo}
+              linkedin={member.linkedin}
+              github={member.github}
+              instagram={member.instagram}
+              email={member.email}
+              phone={member.phone}
             />
-            <h3 className="text-lg font-semibold">{member.name}</h3>
-            <p className="text-sm text-accent">{member.role}</p>
-            <div className="mt-3 flex justify-center gap-3 text-sm">
-              <a href={member.linkedin} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-accent">
-                LinkedIn
-              </a>
-              <a href={member.github} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-accent">
-                GitHub
-              </a>
-            </div>
-          </Card>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="mb-5 text-2xl font-semibold">Secretaries</h2>
+        {secretaries.length ? (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {secretaries.map((secretary) => (
+              <SecretaryHoverCard
+                key={secretary.name}
+                name={secretary.name}
+                post={secretary.role}
+                photo={secretary.photo}
+                linkedin={secretary.linkedin}
+                github={secretary.github}
+                instagram={secretary.instagram}
+                email={secretary.email}
+              />
+            ))}
+          </div>
+        ) : (
+          <EmptyState message="Add secretary details to /public/data/secretaries.csv to populate this section." />
+        )}
+      </section>
+
+      <section>
+        <h2 className="mb-5 text-2xl font-semibold">Coordinators of Previous Tenures</h2>
+        {pastCoordinators.length ? (
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {pastCoordinators.map((member) => (
+              <PersonHoverCard
+                key={`${member.name}-${member.tenure}`}
+                name={member.name}
+                post={member.post}
+                photo={member.photo}
+                subtitle={member.tenure}
+                linkedin={member.linkedin}
+                github={member.github}
+                instagram={member.instagram}
+                email={member.email}
+              />
+            ))}
+          </div>
+        ) : (
+          <EmptyState message="Add previous-tenure coordinators to /public/data/past-coordinators.csv to list them here." />
+        )}
+      </section>
     </div>
   );
 };

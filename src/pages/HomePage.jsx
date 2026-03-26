@@ -4,20 +4,17 @@ import Card from '../components/Card';
 import SectionHeader from '../components/SectionHeader';
 import { fetchCsv } from '../utils/csv';
 
+const winningGameTitles = new Set(['cell - o', 'cell-o', 'ignition evade']);
+
 const HomePage = () => {
   const [projects, setProjects] = useState([]);
-  const [renderMondays, setRenderMondays] = useState([]);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    Promise.all([
-      fetchCsv('/data/projects.csv'),
-      fetchCsv('/data/rendermondays.csv'),
-      fetchCsv('/data/events.csv'),
-    ])
-      .then(([projectRows, renderRows, eventRows]) => {
-        setProjects(projectRows.slice(0, 3));
-        setRenderMondays(renderRows.slice(0, 4));
+    Promise.all([fetchCsv('/data/projects.csv'), fetchCsv('/data/events.csv')])
+      .then(([projectRows, eventRows]) => {
+        const winningGames = projectRows.filter((project) => winningGameTitles.has(project.title.toLowerCase()));
+        setProjects(winningGames);
         setEvents(eventRows);
       })
       .catch((error) => console.error(error));
@@ -31,15 +28,12 @@ const HomePage = () => {
       .slice(0, 3);
   }, [events]);
 
-  const heroRender = renderMondays[0];
-  const sideRenders = renderMondays.slice(1, 4);
-
   return (
     <div className="space-y-14">
       <section className="rounded-3xl border border-slate-700/70 bg-panel/70 bg-grid bg-[size:36px_36px] p-8 shadow-glow sm:p-12">
         <SectionHeader
-          title="Studio Centauri"
-          subtitle="The Game Development Club at IIT Kanpur where programmers, artists, designers, and storytellers collaborate to ship playable ideas."
+          title="Game Development Club"
+          subtitle="Game Development Club, IIT Kanpur is where programmers, artists, designers, and storytellers collaborate to ship playable ideas."
         />
         <div className="mb-6 text-sm uppercase tracking-[0.16em] text-slate-400">Learn.Play.Create.</div>
         <div className="flex flex-wrap gap-4">
@@ -52,43 +46,6 @@ const HomePage = () => {
           <a href="#about-us" className="btn-secondary">
             About Us
           </a>
-        </div>
-      </section>
-
-      <section>
-        <div className="mb-5 flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-semibold">RenderMondays Spotlight</h2>
-          <Link to="/rendermondays" className="btn-secondary text-sm">
-            View All Weeks
-          </Link>
-        </div>
-        <div className="grid gap-5 lg:grid-cols-3">
-          {heroRender ? (
-            <Card className="lg:col-span-2 p-3">
-              <img
-                src={heroRender.image}
-                alt={heroRender.title}
-                loading="lazy"
-                className="h-72 w-full rounded-2xl object-cover sm:h-96"
-              />
-              <div className="p-3 sm:p-4">
-                <p className="text-sm text-accent">Featured Submission - Week {heroRender.week}</p>
-                <h3 className="mt-1 text-2xl font-semibold">{heroRender.title}</h3>
-                <p className="text-slate-300">Artwork by {heroRender.artist}</p>
-              </div>
-            </Card>
-          ) : null}
-
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
-            {sideRenders.map((item) => (
-              <Card key={`${item.title}-${item.week}`}>
-                <img src={item.image} alt={item.title} loading="lazy" className="mb-4 h-40 w-full rounded-xl object-cover" />
-                <p className="text-sm text-accent">Week {item.week}</p>
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-sm text-slate-300">By {item.artist}</p>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -123,13 +80,15 @@ const HomePage = () => {
       </section>
 
       <section>
-        <h2 className="mb-5 text-2xl font-semibold">Featured Student Games</h2>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <h2 className="mb-5 text-2xl font-semibold">Inter IIT TechMeet Winners</h2>
+        <div className="grid gap-5 md:grid-cols-2">
           {projects.map((project) => (
             <Card key={project.title}>
-              <img src={project.image} alt={project.title} loading="lazy" className="mb-4 h-44 w-full rounded-xl object-cover" />
+              {project.image ? (
+                <img src={project.image} alt={project.title} loading="lazy" className="mb-4 h-44 w-full rounded-xl object-cover" />
+              ) : null}
               <h3 className="text-xl font-semibold">{project.title}</h3>
-              <p className="mt-2 text-sm text-slate-300">{project.description}</p>
+              {project.description ? <p className="mt-2 text-sm text-slate-300">{project.description}</p> : null}
             </Card>
           ))}
         </div>
