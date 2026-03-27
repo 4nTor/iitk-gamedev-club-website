@@ -33,7 +33,7 @@ public/games/nebula-rush/TemplateData/*
 
 ## How to link from the site
 
-In `public/data/projects.csv`, set the `play` link to the game URL:
+In `public/data/games.csv`, set the `play` link to the game URL:
 
 ```
 /play/games/<game-slug>/index.html

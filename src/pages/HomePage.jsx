@@ -7,14 +7,14 @@ import { fetchCsv } from '../utils/csv';
 const winningGameTitles = new Set(['cell - o', 'cell-o', 'ignition evade']);
 
 const HomePage = () => {
-  const [projects, setProjects] = useState([]);
+  const [games, setGames] = useState([]);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    Promise.all([fetchCsv('/data/projects.csv'), fetchCsv('/data/events.csv')])
-      .then(([projectRows, eventRows]) => {
-        const winningGames = projectRows.filter((project) => winningGameTitles.has(project.title.toLowerCase()));
-        setProjects(winningGames);
+    Promise.all([fetchCsv('/data/games.csv'), fetchCsv('/data/events.csv')])
+      .then(([gameRows, eventRows]) => {
+        const winningGames = gameRows.filter((game) => winningGameTitles.has(game.title.toLowerCase()));
+        setGames(winningGames);
         setEvents(eventRows);
       })
       .catch((error) => console.error(error));
@@ -37,15 +37,12 @@ const HomePage = () => {
         />
         <div className="mb-6 text-sm uppercase tracking-[0.16em] text-slate-400">Learn.Play.Create.</div>
         <div className="flex flex-wrap gap-4">
-          <Link to="/projects" className="btn-primary">
-            Explore Projects
+          <Link to="/games" className="btn-primary">
+            Explore Games
           </Link>
           <Link to="/learning" className="btn-secondary">
             Start Learning
           </Link>
-          <a href="#about-us" className="btn-secondary">
-            About Us
-          </a>
         </div>
       </section>
 
@@ -82,13 +79,11 @@ const HomePage = () => {
       <section>
         <h2 className="mb-5 text-2xl font-semibold">Inter IIT TechMeet Winners</h2>
         <div className="grid gap-5 md:grid-cols-2">
-          {projects.map((project) => (
-            <Card key={project.title}>
-              {project.image ? (
-                <img src={project.image} alt={project.title} loading="lazy" className="mb-4 h-44 w-full rounded-xl object-cover" />
-              ) : null}
-              <h3 className="text-xl font-semibold">{project.title}</h3>
-              {project.description ? <p className="mt-2 text-sm text-slate-300">{project.description}</p> : null}
+          {games.map((game) => (
+            <Card key={game.title}>
+              {game.image ? <img src={game.image} alt={game.title} loading="lazy" className="mb-4 h-44 w-full rounded-xl object-cover" /> : null}
+              <h3 className="text-xl font-semibold">{game.title}</h3>
+              {game.description ? <p className="mt-2 text-sm text-slate-300">{game.description}</p> : null}
             </Card>
           ))}
         </div>

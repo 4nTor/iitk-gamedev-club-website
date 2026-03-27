@@ -42,7 +42,7 @@ const EventsPage = () => {
 
   return (
     <div className="space-y-12">
-      <SectionHeader title="Events" subtitle="Upcoming and past sessions loaded from /public/data/events.csv." />
+      <SectionHeader title="Events" subtitle="Workshops, showcases, game jams, talks, and club sessions across the year." />
 
       <section>
         <h2 className="mb-5 text-2xl font-semibold">Upcoming</h2>

@@ -1,8 +1,8 @@
 const socialLinks = [
-  ['Instagram', 'https://www.instagram.com'],
-  ['LinkedIn', 'https://www.linkedin.com'],
-  ['GitHub', 'https://github.com'],
-  ['Discord', 'https://discord.com'],
+  ['Instagram', 'https://www.instagram.com/gamedev_iitk?igsh=dGRqOG1wZXhrN3pq'],
+  ['LinkedIn', 'https://www.linkedin.com/company/game-development-club-iitk/posts/?feedView=all'],
+  ['GitHub', 'https://github.com/studiocentauri'],
+  ['Discord', 'https://discord.gg/hhC7tugtsK'],
 ];
 
 const Footer = () => {

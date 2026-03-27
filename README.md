@@ -40,7 +40,7 @@ scripts/
 ## Pages
 
 - Home
-- Projects
+- Games
 - Team
 - RenderMondays
 - Events
@@ -60,7 +60,7 @@ All editable content lives in `public/data/`.
 name,role,photo,linkedin,github
 ```
 
-### `projects.csv`
+### `games.csv`
 
 ```csv
 title,description,image,github,play
@@ -90,9 +90,9 @@ name,role,photo,linkedin,github
 3. Commit and push to GitHub.
 4. Vercel will redeploy, and Team page updates automatically.
 
-## How To Add New Projects
+## How To Add New Games
 
-1. Open `public/data/projects.csv`.
+1. Open `public/data/games.csv`.
 2. Add a new row with:
 
 ```csv

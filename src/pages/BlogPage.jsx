@@ -26,10 +26,7 @@ const BlogPage = () => {
 
   return (
     <div>
-      <SectionHeader
-        title="JustInsights"
-        subtitle="Club blog posts rendered from markdown files in /public/posts."
-      />
+      <SectionHeader title="JustInsights" subtitle="Thoughts, dev notes, postmortems, and club writeups from the Game Development Club." />
       <div className="space-y-6">
         {posts.map((post) => (
           <Card key={post.slug}>

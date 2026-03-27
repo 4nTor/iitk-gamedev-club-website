@@ -1,7 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Card from '../components/Card';
 import SectionHeader from '../components/SectionHeader';
 import { fetchCsv } from '../utils/csv';
+
+const officialLinks = [
+  ['LinkedIn', 'https://www.linkedin.com/company/game-development-club-iitk/posts/?feedView=all'],
+  ['Instagram', 'https://www.instagram.com/gamedev_iitk?igsh=dGRqOG1wZXhrN3pq'],
+  ['GitHub', 'https://github.com/studiocentauri'],
+  ['Discord', 'https://discord.gg/hhC7tugtsK'],
+];
 
 const EmptyState = ({ message }) => (
   <Card>
@@ -74,6 +81,11 @@ const SecretaryHoverCard = ({ name, post, photo, linkedin, github, instagram, em
   </div>
 );
 
+const getTenureStart = (tenure = '') => {
+  const match = tenure.match(/(\d{4})/);
+  return match ? Number(match[1]) : 0;
+};
+
 const TeamPage = () => {
   const [coordinators, setCoordinators] = useState([]);
   const [secretaries, setSecretaries] = useState([]);
@@ -93,12 +105,38 @@ const TeamPage = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  const groupedPastCoordinators = useMemo(() => {
+    const groups = pastCoordinators.reduce((accumulator, member) => {
+      const key = member.tenure || 'Unknown';
+      if (!accumulator[key]) {
+        accumulator[key] = [];
+      }
+      accumulator[key].push(member);
+      return accumulator;
+    }, {});
+
+    return Object.entries(groups).sort((a, b) => getTenureStart(b[0]) - getTenureStart(a[0]));
+  }, [pastCoordinators]);
+
   return (
     <div className="space-y-12">
       <SectionHeader
         title="Contact Us"
-        subtitle="Meet the current coordinators, club secretaries, and previous-tenure coordinators. Update these sections from the CSV files in /public/data."
+        subtitle="Meet the current coordinators, club secretaries, and teams from past tenures."
       />
+
+      <section>
+        <h2 className="mb-5 text-2xl font-semibold">Official Links</h2>
+        <Card>
+          <div className="flex flex-wrap gap-4">
+            {officialLinks.map(([label, href]) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
+                {label}
+              </a>
+            ))}
+          </div>
+        </Card>
+      </section>
 
       <section>
         <h2 className="mb-5 text-2xl font-semibold">Current Coordinators</h2>
@@ -142,21 +180,31 @@ const TeamPage = () => {
       </section>
 
       <section>
-        <h2 className="mb-5 text-2xl font-semibold">Coordinators of Previous Tenures</h2>
-        {pastCoordinators.length ? (
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {pastCoordinators.map((member) => (
-              <PersonHoverCard
-                key={`${member.name}-${member.tenure}`}
-                name={member.name}
-                post={member.post}
-                photo={member.photo}
-                subtitle={member.tenure}
-                linkedin={member.linkedin}
-                github={member.github}
-                instagram={member.instagram}
-                email={member.email}
-              />
+        <h2 className="mb-5 text-2xl font-semibold">Past Tenures</h2>
+        {groupedPastCoordinators.length ? (
+          <div className="space-y-10">
+            {groupedPastCoordinators.map(([tenure, members]) => (
+              <div key={tenure} className="space-y-5">
+                <div className="flex items-center gap-4">
+                  <h3 className="text-xl font-semibold text-white">{tenure === '2020-21' ? 'Founders' : tenure}</h3>
+                  <div className="h-px flex-1 bg-slate-800" />
+                </div>
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                  {members.map((member) => (
+                    <PersonHoverCard
+                      key={`${member.name}-${member.tenure}`}
+                      name={member.name}
+                      post={member.post || (tenure === '2020-21' ? 'Founder' : 'Coordinator')}
+                      photo={member.photo}
+                      subtitle={tenure === '2020-21' ? '2020-21' : member.tenure}
+                      linkedin={member.linkedin}
+                      github={member.github}
+                      instagram={member.instagram}
+                      email={member.email}
+                    />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         ) : (

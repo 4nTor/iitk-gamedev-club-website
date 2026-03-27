@@ -3,13 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 const navItems = [
   ['/', 'Home'],
-  ['/projects', 'Projects'],
+  ['/games', 'Games'],
   ['/contact', 'Contact Us'],
   ['/events', 'Events'],
   ['/learning', 'Learning'],
   ['/blog', 'Blog'],
   ['/gallery', 'Gallery'],
-  ['/sponsors', 'Sponsors'],
 ];
 
 const Navbar = () => {
@@ -21,7 +20,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between gap-3">
           <NavLink to="/" className="flex items-center gap-3 leading-tight" onClick={() => setOpen(false)}>
             <img
-              src="/images/Logo.webp"
+              src="/images/logo.jpeg"
               alt="Game Development Club Logo"
               className="h-10 w-10 rounded-full border border-slate-700/80 object-cover"
               loading="lazy"
