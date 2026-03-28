@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,16 +8,236 @@
   color-scheme: dark;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Pixellari', 'Segoe UI', 'Inter', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', 'Inter', sans-serif;
-  background: radial-gradient(circle at 20% 18%, rgba(216, 217, 221, 0.09), transparent 34%),
-    radial-gradient(circle at 82% 0%, rgba(181, 159, 119, 0.10), transparent 30%), #0a0a0b;
+  background: #05070b;
   min-height: 100vh;
 }
 
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2 {
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 0.04em;
+}
+
+@media (pointer: fine) {
+  html,
+  body,
+  button,
+  a,
+  input,
+  textarea,
+  select,
+  [role='button'] {
+    cursor: none;
+  }
+}
+
+.site-cursor {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  transition: transform 90ms ease, opacity 120ms ease;
+  filter: drop-shadow(0 0 18px rgba(181, 159, 119, 0.25));
+}
+
+.site-cursor--interactive {
+  transform: translate(-50%, -50%) scale(1.14);
+}
+
+.site-cursor--pressed {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.site-cursor__ring,
+.site-cursor__dot,
+.site-cursor__axis {
+  position: absolute;
+}
+
+.site-cursor__ring {
+  inset: 6px;
+  border: 1.5px solid rgba(181, 159, 119, 0.92);
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(181, 159, 119, 0.18);
+}
+
+.site-cursor__dot {
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: rgba(216, 217, 221, 0.96);
+  box-shadow: 0 0 10px rgba(216, 217, 221, 0.45);
+}
+
+.site-cursor__axis--h {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, rgba(216, 217, 221, 0.95) 22%, rgba(181, 159, 119, 0.92) 50%, rgba(216, 217, 221, 0.95) 78%, transparent);
+}
+
+.site-cursor__axis--v {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, rgba(216, 217, 221, 0.95) 22%, rgba(181, 159, 119, 0.92) 50%, rgba(216, 217, 221, 0.95) 78%, transparent);
+}
+
+.cursor-beam {
+  position: fixed;
+  width: 4px;
+  height: 220px;
+  transform: translate(-50%, -100%);
+  transform-origin: center bottom;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(181, 159, 119, 0.92) 38%, rgba(216, 217, 221, 1) 70%, rgba(255, 255, 255, 1) 100%);
+  box-shadow: 0 0 16px rgba(181, 159, 119, 0.46), 0 0 32px rgba(216, 217, 221, 0.22);
+  animation: cursorLaserVertical 260ms ease-out forwards;
+}
+
+.cursor-impact {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  border: 1.5px solid rgba(216, 217, 221, 0.92);
+  box-shadow: 0 0 18px rgba(216, 217, 221, 0.4);
+  animation: cursorImpact 320ms ease-out forwards;
+}
+
+.cursor-impact::before,
+.cursor-impact::after {
+  content: '';
+  position: absolute;
+  inset: 50%;
+  background: rgba(181, 159, 119, 0.95);
+  transform: translate(-50%, -50%);
+}
+
+.cursor-impact::before {
+  width: 24px;
+  height: 2px;
+}
+
+.cursor-impact::after {
+  width: 2px;
+  height: 24px;
+}
+
+.cursor-impact--interactive {
+  border-color: rgba(181, 159, 119, 0.98);
+  box-shadow: 0 0 24px rgba(181, 159, 119, 0.48);
+}
+
+@keyframes cursorLaserVertical {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -35%) scaleY(0.15);
+    filter: brightness(1.1);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -130%) scaleY(1.3);
+    filter: brightness(1.8);
+  }
+}
+
+@keyframes cursorImpact {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+  22% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.4);
+  }
+}
+
+.bg-space-gradient {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(216, 217, 221, 0.08), transparent 26%),
+    radial-gradient(circle at 72% 8%, rgba(181, 159, 119, 0.12), transparent 22%),
+    radial-gradient(circle at 88% 78%, rgba(181, 159, 119, 0.08), transparent 18%),
+    linear-gradient(180deg, rgba(8, 10, 14, 0.96) 0%, rgba(5, 7, 11, 0.98) 100%);
+}
+
+.hero-console {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(16, 18, 24, 0.94), rgba(8, 10, 14, 0.9)),
+    linear-gradient(90deg, rgba(181, 159, 119, 0.08), transparent 30%, transparent 70%, rgba(181, 159, 119, 0.06));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.hero-console::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.hero-console::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.console-chip {
+  @apply inline-flex items-center rounded-md border border-accent2/30 bg-black/30 px-3 py-1 text-[11px] uppercase tracking-[0.26em] text-accent2;
+}
+
+.console-panel {
+  @apply rounded-2xl border border-white/10 bg-black/25 p-4 backdrop-blur;
+}
+
 .card {
-  @apply rounded-2xl border border-slate-700/70 bg-panel/85 p-5 shadow-lg backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-glow;
+  @apply rounded-2xl border border-white/10 bg-panel/70 p-5 shadow-lg backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-accent2/60 hover:shadow-glow;
 }
 
 .page-title {
@@ -27,9 +249,9 @@ body {
 }
 
 .btn-primary {
-  @apply inline-flex items-center rounded-xl bg-accent px-4 py-2 font-semibold text-slate-900 transition hover:bg-accent2 hover:text-white;
+  @apply inline-flex items-center rounded-xl bg-accent2 px-4 py-2 font-semibold text-slate-950 transition hover:bg-accent hover:text-slate-950;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center rounded-xl border border-accent/70 px-4 py-2 font-semibold text-accent transition hover:bg-accent/10;
+  @apply inline-flex items-center rounded-xl border border-accent2/70 px-4 py-2 font-semibold text-accent2 transition hover:bg-accent2/10;
 }

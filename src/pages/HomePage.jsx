@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../components/Card';
-import SectionHeader from '../components/SectionHeader';
 import { fetchCsv } from '../utils/csv';
 
 const winningGameTitles = new Set(['cell - o', 'cell-o', 'ignition evade']);
@@ -30,19 +29,81 @@ const HomePage = () => {
 
   return (
     <div className="space-y-14">
-      <section className="rounded-3xl border border-slate-700/70 bg-panel/70 bg-grid bg-[size:36px_36px] p-8 shadow-glow sm:p-12">
-        <SectionHeader
-          title="Game Development Club"
-          subtitle="Game Development Club, IIT Kanpur is where programmers, artists, designers, and storytellers collaborate to ship playable ideas."
-        />
-        <div className="mb-6 text-sm uppercase tracking-[0.16em] text-slate-400">Learn.Play.Create.</div>
-        <div className="flex flex-wrap gap-4">
-          <Link to="/games" className="btn-primary">
-            Explore Games
-          </Link>
-          <Link to="/learning" className="btn-secondary">
-            Start Learning
-          </Link>
+      <section className="hero-console rounded-[2rem] border border-white/10 px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
+        <div className="relative z-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_320px] lg:items-stretch">
+          <div className="console-panel flex flex-col justify-between gap-8 p-5 sm:p-6">
+            <div>
+              <div className="mb-6 flex flex-wrap items-center gap-3">
+                <span className="console-chip">Bridge Link</span>
+                <span className="text-[11px] uppercase tracking-[0.32em] text-slate-500">IIT Kanpur Sector</span>
+              </div>
+
+              <div className="mb-6 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.26em] text-slate-500">
+                <span className="rounded-md border border-white/10 px-2 py-1">Code</span>
+                <span className="rounded-md border border-white/10 px-2 py-1">Art</span>
+                <span className="rounded-md border border-white/10 px-2 py-1">Design</span>
+                <span className="rounded-md border border-white/10 px-2 py-1">Audio</span>
+              </div>
+
+              <h1 className="max-w-4xl text-4xl font-semibold uppercase leading-[0.94] tracking-[0.05em] text-white sm:text-5xl lg:text-6xl">
+                Learn. Play. Create.
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                A student-run game development club building playable worlds through programming, visual art, sound,
+                systems, and experimentation.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link to="/games" className="btn-primary rounded-md px-5 py-3 text-base uppercase tracking-[0.12em]">
+                Explore Games
+              </Link>
+              <Link to="/learning" className="btn-secondary rounded-md px-5 py-3 text-base uppercase tracking-[0.12em]">
+                Start Learning
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <div className="console-panel p-5">
+              <p className="text-[11px] uppercase tracking-[0.3em] text-slate-500">System Feed</p>
+              <div className="mt-5 space-y-4">
+                <div className="flex items-start justify-between gap-3 border-b border-white/8 pb-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent2">Status</p>
+                    <p className="mt-2 text-sm text-slate-300">Student-led studio operations active.</p>
+                  </div>
+                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-accent2 shadow-[0_0_14px_rgba(181,159,119,0.5)]" />
+                </div>
+                <div className="flex items-start justify-between gap-3 border-b border-white/8 pb-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent2">Focus</p>
+                    <p className="mt-2 text-sm text-slate-300">Jams, workshops, prototypes, and campus-built games.</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.22em] text-accent2">Signal</p>
+                  <p className="mt-2 text-sm text-slate-300">Game Development Club transmission stable.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="console-panel grid grid-cols-3 gap-3 text-center">
+              <div className="rounded-xl border border-white/8 bg-black/20 px-3 py-4">
+                <p className="text-2xl font-semibold text-white">02</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-slate-500">Winners</p>
+              </div>
+              <div className="rounded-xl border border-white/8 bg-black/20 px-3 py-4">
+                <p className="text-2xl font-semibold text-white">06</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-slate-500">Tracks</p>
+              </div>
+              <div className="rounded-xl border border-white/8 bg-black/20 px-3 py-4">
+                <p className="text-2xl font-semibold text-white">01</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.24em] text-slate-500">Club</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
