@@ -36,13 +36,15 @@ const HomePage = () => {
         distance={34}
       >
         <div className="relative z-10 flex min-h-[65vh] max-w-5xl flex-col justify-center">
-          <h1 className="max-w-5xl text-[2.05rem] font-semibold uppercase leading-[0.98] tracking-[0.04em] text-white sm:text-[3.35rem] lg:text-[5.1rem]">
-            Game Development Club
+          <h1 className="max-w-5xl text-[1.7rem] font-semibold uppercase leading-[1.02] tracking-[0.04em] text-white sm:text-[3.35rem] lg:text-[5.1rem]">
+            <span className="block sm:inline">Game </span>
+            <span className="block sm:inline">Development </span>
+            <span className="block sm:inline">Club</span>
           </h1>
 
-          <p className="mt-5 text-[1.35rem] uppercase tracking-[0.2em] text-slate-300 sm:text-[1.55rem] lg:text-[1.8rem]">IIT Kanpur</p>
+          <p className="mt-5 text-[1.15rem] uppercase tracking-[0.18em] text-slate-300 sm:text-[1.55rem] lg:text-[1.8rem]">IIT Kanpur</p>
 
-          <p className="mt-4 text-sm uppercase tracking-[0.26em] text-slate-400 sm:text-base lg:text-lg">Learn. Play. Create.</p>
+          <p className="mt-4 text-xs uppercase tracking-[0.24em] text-slate-400 sm:text-base lg:text-lg">Learn. Play. Create.</p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link to="/games" className="btn-primary rounded-md px-6 py-4 text-lg uppercase tracking-[0.12em]">

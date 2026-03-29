@@ -23,21 +23,21 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="mx-auto w-full max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-        <div className="rounded-[1.6rem] border border-white/10 bg-black/30 px-4 py-3 shadow-[0_14px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl">
-          <div className="flex items-center justify-between gap-4 xl:gap-6">
+      <nav className="mx-auto w-full max-w-7xl px-3 py-3 sm:px-6 lg:px-8">
+        <div className="rounded-[1.6rem] border border-white/10 bg-black/30 px-3 py-3 shadow-[0_14px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-4">
+          <div className="flex items-center justify-between gap-3 xl:gap-6">
             <NavLink to="/" className="min-w-0 flex items-center gap-3 leading-tight" onClick={() => setOpen(false)}>
               <div className="relative shrink-0">
                 <img
                   src="/images/logo.jpeg"
                   alt="Game Development Club Logo"
-                  className="h-11 w-11 rounded-full border border-white/15 object-cover shadow-[0_0_16px_rgba(181,159,119,0.12)]"
+                  className="h-10 w-10 rounded-full border border-white/15 object-cover shadow-[0_0_16px_rgba(181,159,119,0.12)] sm:h-11 sm:w-11"
                   loading="lazy"
                 />
               </div>
               <div className="min-w-0">
-                <p className="truncate text-lg font-bold tracking-[0.05em] text-accent">Game Development Club</p>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-slate-400">IIT Kanpur</p>
+                <p className="truncate text-sm font-bold tracking-[0.03em] text-accent sm:text-lg sm:tracking-[0.05em]">Game Development Club</p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400 sm:text-[11px] sm:tracking-[0.24em]">IIT Kanpur</p>
               </div>
             </NavLink>
 
