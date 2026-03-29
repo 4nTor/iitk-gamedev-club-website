@@ -23,7 +23,7 @@ const App = () => {
       <CursorFx />
       <div className="relative z-10">
         <Navbar onSecretTrigger={() => setGameOpen(true)} />
-        <main className="mx-auto w-full max-w-7xl px-4 pb-16 pt-24 sm:px-6 lg:px-8">
+        <main className="mx-auto w-full max-w-7xl px-4 pb-16 pt-32 sm:px-6 lg:px-8">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/games" element={<GamesPage />} />

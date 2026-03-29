@@ -1,14 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import Card from '../components/Card';
-import SectionHeader from '../components/SectionHeader';
 import { fetchCsv } from '../utils/csv';
-
-const officialLinks = [
-  ['LinkedIn', 'https://www.linkedin.com/company/game-development-club-iitk/posts/?feedView=all'],
-  ['Instagram', 'https://www.instagram.com/gamedev_iitk?igsh=dGRqOG1wZXhrN3pq'],
-  ['GitHub', 'https://github.com/studiocentauri'],
-  ['Discord', 'https://discord.gg/hhC7tugtsK'],
-];
 
 const EmptyState = ({ message }) => (
   <Card>
@@ -28,7 +20,9 @@ const ContactItem = ({ label, value, href }) => {
       {label}
     </a>
   ) : (
-    <p className="text-sm text-slate-200">{label}: {value}</p>
+    <p className="text-sm text-slate-200">
+      {label}: {value}
+    </p>
   );
 };
 
@@ -119,25 +113,7 @@ const TeamPage = () => {
   }, [pastCoordinators]);
 
   return (
-    <div className="space-y-12">
-      <SectionHeader
-        title="Contact Us"
-        subtitle="Meet the current coordinators, club secretaries, and teams from past tenures."
-      />
-
-      <section>
-        <h2 className="mb-5 text-2xl font-semibold">Official Links</h2>
-        <Card>
-          <div className="flex flex-wrap gap-4">
-            {officialLinks.map(([label, href]) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
-                {label}
-              </a>
-            ))}
-          </div>
-        </Card>
-      </section>
-
+    <div className="space-y-12 pt-2">
       <section>
         <h2 className="mb-5 text-2xl font-semibold">Current Coordinators</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
