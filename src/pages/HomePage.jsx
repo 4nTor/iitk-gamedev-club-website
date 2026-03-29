@@ -36,7 +36,7 @@ const HomePage = () => {
         distance={34}
       >
         <div className="relative z-10 flex min-h-[65vh] max-w-5xl flex-col justify-center">
-          <h1 className="max-w-5xl text-[2.6rem] font-semibold uppercase leading-[0.98] tracking-[0.04em] text-white sm:text-[3.6rem] lg:text-[5.1rem]">
+          <h1 className="max-w-5xl text-[2.05rem] font-semibold uppercase leading-[0.98] tracking-[0.04em] text-white sm:text-[3.35rem] lg:text-[5.1rem]">
             Game Development Club
           </h1>
 
