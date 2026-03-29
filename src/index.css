@@ -21,6 +21,8 @@ select {
 }
 
 body {
+  font-size: 1.08rem;
+  line-height: 1.72;
   margin: 0;
   background: #05070b;
   min-height: 100vh;

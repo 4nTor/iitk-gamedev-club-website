@@ -95,7 +95,7 @@ const HomePage = () => {
               <Card>
                 {game.image ? <img src={game.image} alt={game.title} loading="lazy" className="mb-4 h-44 w-full rounded-xl object-cover" /> : null}
                 <h3 className="text-xl font-semibold">{game.title}</h3>
-                {game.description ? <p className="mt-2 text-sm text-slate-300">{game.description}</p> : null}
+                {game.description ? <p className="mt-2 text-base text-slate-300">{game.description}</p> : null}
               </Card>
             </ScrollReveal>
           ))}
@@ -108,9 +108,9 @@ const HomePage = () => {
           {upcomingEvents.map((event, index) => (
             <ScrollReveal key={`${event.title}-${event.date}`} delay={index * 90} distance={22}>
               <Card>
-                <p className="text-sm text-accent">{new Date(event.date).toDateString()}</p>
+                <p className="text-base text-accent">{new Date(event.date).toDateString()}</p>
                 <h3 className="mt-2 text-lg font-semibold">{event.title}</h3>
-                <p className="mt-2 text-sm text-slate-300">{event.description}</p>
+                <p className="mt-2 text-base text-slate-300">{event.description}</p>
               </Card>
             </ScrollReveal>
           ))}
@@ -134,3 +134,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

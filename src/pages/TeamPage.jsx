@@ -4,7 +4,7 @@ import { fetchCsv } from '../utils/csv';
 
 const EmptyState = ({ message }) => (
   <Card>
-    <p className="text-sm text-slate-400">{message}</p>
+    <p className="text-base text-slate-400">{message}</p>
   </Card>
 );
 
@@ -16,11 +16,11 @@ const ContactItem = ({ label, value, href }) => {
   }
 
   return href ? (
-    <a href={href} target="_blank" rel="noreferrer" className="text-sm text-slate-200 transition hover:text-accent2">
+    <a href={href} target="_blank" rel="noreferrer" className="text-base text-slate-200 transition hover:text-accent2">
       {label}
     </a>
   ) : (
-    <p className="text-sm text-slate-200">
+    <p className="text-base text-slate-200">
       {label}: {value}
     </p>
   );
@@ -35,7 +35,7 @@ const PersonHoverCard = ({ name, post, photo, linkedin, github, instagram, email
     <div className="relative flex h-full min-h-72 flex-col justify-end p-6">
       {subtitle ? <p className="mb-2 text-xs uppercase tracking-[0.18em] text-slate-300">{subtitle}</p> : null}
       <h3 className="text-2xl font-semibold text-white">{name}</h3>
-      <p className="mt-1 text-sm uppercase tracking-[0.14em] text-accent">{post}</p>
+      <p className="mt-1 text-base uppercase tracking-[0.14em] text-accent">{post}</p>
     </div>
     <div className="absolute inset-0 z-10 flex flex-col justify-end bg-black/90 p-6 opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
       <p className="mb-3 text-xs uppercase tracking-[0.18em] text-slate-500">Connect</p>
@@ -44,7 +44,7 @@ const PersonHoverCard = ({ name, post, photo, linkedin, github, instagram, email
         <ContactItem label="GitHub" value={github} href={github} />
         <ContactItem label="Instagram" value={instagram} href={instagram} />
         <ContactItem label="Email" value={email} href={email ? `mailto:${email}` : ''} />
-        {phone ? <p className="text-sm text-slate-200">Phone: {phone}</p> : null}
+        {phone ? <p className="text-base text-slate-200">Phone: {phone}</p> : null}
       </div>
     </div>
   </Card>
@@ -192,3 +192,4 @@ const TeamPage = () => {
 };
 
 export default TeamPage;
+

@@ -23,25 +23,25 @@ const GamesPage = () => {
 
   return (
     <div>
-      <SectionHeader title="Club Games" subtitle="Hands-on games, experiments, and playable ideas built by IIT Kanpur students." />
+      <SectionHeader title="Club Games" />
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {games.map((game) => (
           <Card key={game.title}>
             <img src={game.image} alt={game.title} loading="lazy" className="mb-4 h-48 w-full rounded-xl object-cover" />
             <h3 className="text-xl font-semibold">{game.title}</h3>
-            <p className="mt-2 text-sm text-slate-300">{game.description}</p>
+            <p className="mt-2 text-base text-slate-300">{game.description}</p>
             <div className="mt-4 flex gap-3">
               {game.github ? (
-                <a href={game.github} target="_blank" rel="noreferrer" className="btn-secondary text-sm">
+                <a href={game.github} target="_blank" rel="noreferrer" className="btn-secondary text-base">
                   GitHub
                 </a>
               ) : null}
               {game.playerRoute ? (
-                <Link to={game.playerRoute} className="btn-primary text-sm">
+                <Link to={game.playerRoute} className="btn-primary text-base">
                   Play
                 </Link>
               ) : game.play ? (
-                <a href={game.play} target="_blank" rel="noreferrer" className="btn-primary text-sm">
+                <a href={game.play} target="_blank" rel="noreferrer" className="btn-primary text-base">
                   Play
                 </a>
               ) : null}
@@ -54,3 +54,4 @@ const GamesPage = () => {
 };
 
 export default GamesPage;
+

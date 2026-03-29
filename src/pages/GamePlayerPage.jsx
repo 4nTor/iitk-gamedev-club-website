@@ -37,7 +37,7 @@ const GamePlayerPage = () => {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <SectionHeader
           title={game?.title || 'Game Player'}
-          subtitle={game?.description || 'Play the embedded WebGL build without leaving the Game Development Club website.'}
+          
         />
         <div className="flex flex-wrap gap-3">
           <Link to="/games" className="btn-secondary">
@@ -48,7 +48,7 @@ const GamePlayerPage = () => {
 
       <Card className="overflow-hidden p-3 sm:p-4">
         <div className="relative overflow-hidden rounded-2xl border border-slate-800 bg-black">
-          <div className="flex items-center justify-between border-b border-slate-800/80 bg-black/70 px-4 py-3 text-sm text-slate-300">
+          <div className="flex items-center justify-between border-b border-slate-800/80 bg-black/70 px-4 py-3 text-base text-slate-300">
             <div>
               <p className="font-semibold text-accent">{game?.title || 'Game Player'}</p>
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Tap to focus, then use controls</p>
@@ -85,3 +85,4 @@ const GamePlayerPage = () => {
 };
 
 export default GamePlayerPage;
+
