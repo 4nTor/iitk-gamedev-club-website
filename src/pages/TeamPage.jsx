@@ -29,7 +29,7 @@ const ContactItem = ({ label, value, href }) => {
 const PersonHoverCard = ({ name, post, photo, linkedin, github, instagram, email, phone, subtitle }) => (
   <Card className="group relative min-h-72 overflow-hidden border-slate-700 bg-panel/90 p-0 hover:-translate-y-1">
     <div className="absolute inset-0">
-      <img src={normalizePhotoPath(photo)} alt={name} loading="lazy" className="h-full w-full object-cover" />
+      <img src={normalizePhotoPath(photo)} alt={name} loading="lazy" className="h-full w-full object-cover object-center" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,11,0.08),rgba(10,10,11,0.92))]" />
     </div>
     <div className="relative flex h-full min-h-72 flex-col justify-end p-6">
@@ -51,7 +51,7 @@ const PersonHoverCard = ({ name, post, photo, linkedin, github, instagram, email
 );
 
 const SecretaryHoverCard = ({ name, post, photo, linkedin, github, instagram, email }) => (
-  <div className="group relative aspect-square overflow-hidden rounded-full border border-slate-700 bg-panel/90 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-glow">
+  <div className="group relative mx-auto aspect-square w-32 overflow-hidden rounded-full border border-slate-700 bg-panel/90 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-glow sm:w-36 lg:w-40 xl:w-44">
     <img
       src={normalizePhotoPath(photo)}
       alt={name}
@@ -134,9 +134,9 @@ const TeamPage = () => {
       </section>
 
       <section>
-        <h2 className="mb-5 text-2xl font-semibold">Secretaries</h2>
+        <h2 className="mb-4 text-2xl font-semibold">Secretaries</h2>
         {secretaries.length ? (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
             {secretaries.map((secretary) => (
               <SecretaryHoverCard
                 key={secretary.name}
@@ -192,4 +192,3 @@ const TeamPage = () => {
 };
 
 export default TeamPage;
-

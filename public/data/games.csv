@@ -1,33 +1,33 @@
-title,description,image,github,play
-Cell - o,An inter IIT winning game. Carry the legacy of the Grandpa Cell and reignite the city of Ticktown.,/images/cello.PNG,,https://studiocentauri.itch.io/cello
-Quick Draw Chaos,Carry the legacy of the Grandpa Cell and reignite the city of Ticktown.,/images/quickdraw.png,,https://studiocentauri.itch.io/quick-draw-chaos
-The Abyss,Puzzle,/images/abyss.png,,https://studiocentauri.itch.io/the-abyss
-Beat Blaster,Action,/images/beatblaster.png,,https://studiocentauri.itch.io/beat-blaster
-Rumble Run,"Run fast, dodge chaos, and survive the madness.",/images/rumblerun.png,,https://studiocentauri.itch.io/rumble-run
-Asteroid Shooter,Shooter,/images/asteroidsooter.png,,https://studiocentauri.itch.io/asteroid-shooter
-Ignition Evade,Second Runner Up title in Inter-IIT Tech Meet 12.0,/images/ignitionevade.png,,https://studiocentauri.itch.io/ignition-evade
-Lost Affitnity,Role Playing,/images/lostaffinity.png,,https://studiocentauri.itch.io/lost-affinity
-Glitch,Platformer,/images/glitch.png,,https://studiocentauri.itch.io/glitch
-Cannon Cutter,Developed as the Studio Centauri’s first exploration into OpenCV-powered gameplay.,/images/cannoncutter.png,,https://studiocentauri.itch.io/canon-cutter
-Territorial Attack,[Summer Camp '21] Can you save your territory by shooting those projectiles?,/images/territorialattack.png,,https://studiocentauri.itch.io/territorial-attack
-Particles,UnityParticleSystem.exe,/images/particles.png,,https://crypthicc.itch.io/particles
-T69 3000,Game made for SUMMER GAME JAM 2021 by GDCIITK,/images/T693000.png,,https://rockstardaddy.itch.io/t69-3000
-Rise In Air,Let's reach the top of the world!,/images/riseinair.png,,https://naman-jain.itch.io/rise-in-air
-Flow,Flow with Time,/images/flow.png,,https://abhishek-pardhi.itch.io/flowhttpsgithubcomabhishekpardhigamedev-project-2git
-Drift Maniac,It's an Endless Runner 3D Game.,/images/driftmaniac.png,,https://strawhat-deepak.itch.io/drift-maniac
-Missles,Controller based plane game,/images/missles.png,,https://ojasbrid.itch.io/planes
-Bouncer 3D,Survival Shooter,/images/bouncer3d.png,,https://abhishek-pardhi.itch.io/bouncer-3d
-ZapAlong,"A two player online game made for Fall Game Jam 2021, GameDevSocietyIITK",/images/zapalong.png,,https://thetufguy.itch.io/zap1
-Jungle Hunt,"Jungle is in Danger, Save it.",/images/junglehunt.png,,https://harshkp94.itch.io/jungle-hunt
-Space Sheriff,A space shooter 2d game where we the player must kill all the evil robots,/images/spacesheriff.png,,https://aryanmaurya383.itch.io/space-sherrif
-Rapid Roll,Stay Away from Spikes and Live Long,/images/rapidroll.png,,https://harshkp94.itch.io/rapid-roll
-Mystic Dungeon,Explore Mystery in the Dungeon!,/images/mysticdungeon.png,,https://rudranshg.itch.io/mystic-dungeon
-Pinball Reloaded,Pinball - With a Twist!,/images/pinballreloaded.png,,https://rudranshg.itch.io/pinball-reloaded
-Escape,2D - Falling rocks game,/images/escape.png,,https://naman-jain.itch.io/escape
-Puzzle Runner,A two player puzzle game,/images/puzzlerunner.png,,https://ojasbrid.itch.io/puzzle-runner
-Death Route To Victory,save the ball,/images/death route to victory.png,,https://naman-jain.itch.io/death-route-to-victory
-Skyfall,[Summer Camp '20] Drop to the Earth after a space adventure gone wrong,/images/skyfall.png,,https://studiocentauri.itch.io/skyfall
-Gravity Bomb,"[Impromptu #1] Reach the ground, fastest you can",/images/gravitybomb.png,,https://studiocentauri.itch.io/gravity-bomb
-Squar,[Impromptu #1],/images/squar.png,,https://studiocentauri.itch.io/squar
-Infected,[Summer Camp '20] Kill the virus,/images/infected.png,,https://studiocentauri.itch.io/infected
-Gun Shooter,[Impromptu #1] Hunting monsters with a remote turret,/images/gunshooter.png,,https://studiocentauri.itch.io/gun-shooter
+title,description,image,github,play,genres
+Cell - o,An inter IIT podium finisher. Carry the legacy of the Grandpa Cell and reignite the city of Ticktown.,/images/cello.PNG,,https://studiocentauri.itch.io/cello,"Puzzle, Adventure, Platformer"
+Quick Draw Chaos,Draw fast. Shoot faster. Survive the chaos.,/images/quickdraw.png,,https://studiocentauri.itch.io/quick-draw-chaos,"Shooter, Survival, Computer Vision"
+The Abyss,Puzzle,/images/abyss.png,,https://studiocentauri.itch.io/the-abyss,"Puzzle, Adventure, Platformer"
+Beat Blaster,Action,/images/beatblaster.png,,https://studiocentauri.itch.io/beat-blaster,"Shooter, Survival, VR"
+Rumble Run,"Run fast, dodge chaos, and survive the madness.",/images/rumblerun.png,,https://studiocentauri.itch.io/rumble-run,
+Asteroid Shooter,Shooter,/images/asteroidsooter.png,,https://studiocentauri.itch.io/asteroid-shooter,
+Ignition Evade,Second Runner Up title in Inter-IIT Tech Meet 12.0,/images/ignitionevade.png,,https://studiocentauri.itch.io/ignition-evade,
+Lost Affitnity,Role Playing,/images/lostaffinity.png,,https://studiocentauri.itch.io/lost-affinity,
+Glitch,Platformer,/images/glitch.png,,https://studiocentauri.itch.io/glitch,
+Cannon Cutter,Developed as the Studio Centauri’s first exploration into OpenCV-powered gameplay.,/images/cannoncutter.png,,https://studiocentauri.itch.io/canon-cutter,
+Territorial Attack,[Summer Camp '21] Can you save your territory by shooting those projectiles?,/images/territorialattack.png,,https://studiocentauri.itch.io/territorial-attack,
+Particles,UnityParticleSystem.exe,/images/particles.png,,https://crypthicc.itch.io/particles,
+T69 3000,Game made for SUMMER GAME JAM 2021 by GDCIITK,/images/T693000.png,,https://rockstardaddy.itch.io/t69-3000,
+Rise In Air,Let's reach the top of the world!,/images/riseinair.png,,https://naman-jain.itch.io/rise-in-air,
+Flow,Flow with Time,/images/flow.png,,https://abhishek-pardhi.itch.io/flowhttpsgithubcomabhishekpardhigamedev-project-2git,
+Drift Maniac,It's an Endless Runner 3D Game.,/images/driftmaniac.png,,https://strawhat-deepak.itch.io/drift-maniac,
+Missles,Controller based plane game,/images/missles.png,,https://ojasbrid.itch.io/planes,
+Bouncer 3D,Survival Shooter,/images/bouncer3d.png,,https://abhishek-pardhi.itch.io/bouncer-3d,
+ZapAlong,"A two player online game made for Fall Game Jam 2021, GameDevSocietyIITK",/images/zapalong.png,,https://thetufguy.itch.io/zap1,
+Jungle Hunt,"Jungle is in Danger, Save it.",/images/junglehunt.png,,https://harshkp94.itch.io/jungle-hunt,
+Space Sheriff,A space shooter 2d game where we the player must kill all the evil robots,/images/spacesheriff.png,,https://aryanmaurya383.itch.io/space-sherrif,
+Rapid Roll,Stay Away from Spikes and Live Long,/images/rapidroll.png,,https://harshkp94.itch.io/rapid-roll,
+Mystic Dungeon,Explore Mystery in the Dungeon!,/images/mysticdungeon.png,,https://rudranshg.itch.io/mystic-dungeon,
+Pinball Reloaded,Pinball - With a Twist!,/images/pinballreloaded.png,,https://rudranshg.itch.io/pinball-reloaded,
+Escape,2D - Falling rocks game,/images/escape.png,,https://naman-jain.itch.io/escape,
+Puzzle Runner,A two player puzzle game,/images/puzzlerunner.png,,https://ojasbrid.itch.io/puzzle-runner,
+Death Route To Victory,save the ball,/images/death route to victory.png,,https://naman-jain.itch.io/death-route-to-victory,
+Skyfall,[Summer Camp '20] Drop to the Earth after a space adventure gone wrong,/images/skyfall.png,,https://studiocentauri.itch.io/skyfall,
+Gravity Bomb,"[Impromptu #1] Reach the ground, fastest you can",/images/gravitybomb.png,,https://studiocentauri.itch.io/gravity-bomb,
+Squar,[Impromptu #1],/images/squar.png,,https://studiocentauri.itch.io/squar,
+Infected,[Summer Camp '20] Kill the virus,/images/infected.png,,https://studiocentauri.itch.io/infected,
+Gun Shooter,[Impromptu #1] Hunting monsters with a remote turret,/images/gunshooter.png,,https://studiocentauri.itch.io/gun-shooter,

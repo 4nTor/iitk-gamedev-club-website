@@ -69,20 +69,22 @@ h2 {
 }
 
 .site-cursor {
+  --cursor-lock-gap: 0px;
   position: fixed;
   width: 28px;
   height: 28px;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(var(--cursor-zoom-scale, 1));
   transition: transform 90ms ease, opacity 120ms ease;
   filter: drop-shadow(0 0 18px rgba(181, 159, 119, 0.25));
 }
 
 .site-cursor--interactive {
-  transform: translate(-50%, -50%) scale(1.14);
+  transform: translate(-50%, -50%) scale(calc(var(--cursor-zoom-scale, 1) * 1.22));
+  --cursor-lock-gap: 8px;
 }
 
 .site-cursor--pressed {
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(calc(var(--cursor-zoom-scale, 1) * 0.9));
 }
 
 .site-cursor__ring,
@@ -115,7 +117,7 @@ h2 {
   top: 50%;
   height: 1px;
   transform: translateY(-50%);
-  background: linear-gradient(90deg, transparent, rgba(216, 217, 221, 0.95) 22%, rgba(181, 159, 119, 0.92) 50%, rgba(216, 217, 221, 0.95) 78%, transparent);
+  background: linear-gradient(90deg, transparent 0, transparent 10%, rgba(216, 217, 221, 0.95) 24%, rgba(181, 159, 119, 0.92) calc(50% - var(--cursor-lock-gap)), transparent calc(50% - var(--cursor-lock-gap)), transparent calc(50% + var(--cursor-lock-gap)), rgba(181, 159, 119, 0.92) calc(50% + var(--cursor-lock-gap)), rgba(216, 217, 221, 0.95) 76%, transparent 90%, transparent 100%);
 }
 
 .site-cursor__axis--v {
@@ -124,14 +126,27 @@ h2 {
   left: 50%;
   width: 1px;
   transform: translateX(-50%);
-  background: linear-gradient(180deg, transparent, rgba(216, 217, 221, 0.95) 22%, rgba(181, 159, 119, 0.92) 50%, rgba(216, 217, 221, 0.95) 78%, transparent);
+  background: linear-gradient(180deg, transparent 0, transparent 10%, rgba(216, 217, 221, 0.95) 24%, rgba(181, 159, 119, 0.92) calc(50% - var(--cursor-lock-gap)), transparent calc(50% - var(--cursor-lock-gap)), transparent calc(50% + var(--cursor-lock-gap)), rgba(181, 159, 119, 0.92) calc(50% + var(--cursor-lock-gap)), rgba(216, 217, 221, 0.95) 76%, transparent 90%, transparent 100%);
+}
+
+.site-cursor--interactive .site-cursor__ring {
+  inset: 2px;
+  border-color: rgba(216, 217, 221, 0.98);
+  box-shadow: 0 0 28px rgba(181, 159, 119, 0.36);
+}
+
+.site-cursor--interactive .site-cursor__dot {
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 16px rgba(216, 217, 221, 0.75);
 }
 
 .cursor-beam {
   position: fixed;
   width: 4px;
   height: 220px;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -100%) scale(var(--cursor-zoom-scale, 1));
   transform-origin: center bottom;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(181, 159, 119, 0.92) 38%, rgba(216, 217, 221, 1) 70%, rgba(255, 255, 255, 1) 100%);
   box-shadow: 0 0 16px rgba(181, 159, 119, 0.46), 0 0 32px rgba(216, 217, 221, 0.22);
@@ -142,7 +157,7 @@ h2 {
   position: fixed;
   width: 18px;
   height: 18px;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(var(--cursor-zoom-scale, 1));
   border-radius: 999px;
   border: 1.5px solid rgba(216, 217, 221, 0.92);
   box-shadow: 0 0 18px rgba(216, 217, 221, 0.4);
@@ -176,7 +191,7 @@ h2 {
 @keyframes cursorLaserVertical {
   0% {
     opacity: 0;
-    transform: translate(-50%, -35%) scaleY(0.15);
+    transform: translate(-50%, -35%) scale(calc(var(--cursor-zoom-scale, 1) * 0.15));
     filter: brightness(1.1);
   }
   18% {
@@ -184,7 +199,7 @@ h2 {
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -130%) scaleY(1.3);
+    transform: translate(-50%, -130%) scale(calc(var(--cursor-zoom-scale, 1) * 1.3));
     filter: brightness(1.8);
   }
 }
@@ -192,14 +207,14 @@ h2 {
 @keyframes cursorImpact {
   0% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.25);
+    transform: translate(-50%, -50%) scale(calc(var(--cursor-zoom-scale, 1) * 0.25));
   }
   22% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(2.4);
+    transform: translate(-50%, -50%) scale(calc(var(--cursor-zoom-scale, 1) * 2.4));
   }
 }
 
@@ -274,4 +289,6 @@ h2 {
 .btn-secondary {
   @apply inline-flex items-center rounded-xl border border-accent2/70 px-4 py-2 font-semibold text-accent2 transition hover:bg-accent2/10;
 }
+
+
 

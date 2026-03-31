@@ -77,6 +77,8 @@ const ConstellationBackground = () => {
   }, []);
 
   const activeStar = useMemo(() => resolveActiveStar(location.pathname), [location.pathname]);
+  const homeLogoOpacity = Math.max(0, 0.58 - scrollY / 900);
+  const homeLogoScale = 1;
 
   return (
     <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
@@ -87,6 +89,19 @@ const ConstellationBackground = () => {
         alt=""
         className="absolute left-1/2 top-1/2 h-[86vh] max-h-[960px] w-auto -translate-x-1/2 -translate-y-[44%] opacity-[0.16] mix-blend-screen"
       />
+      {location.pathname === '/' ? (
+        <div
+          className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2"
+          style={{ opacity: homeLogoOpacity, transform: `translate(-50%, -50%) scale(${homeLogoScale})` }}
+        >
+          <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(181,159,119,0.26),transparent_65%)] blur-2xl" />
+          <img
+            src="/images/logo.jpeg"
+            alt=""
+            className="relative h-[18rem] w-[18rem] rounded-full border border-white/10 object-cover mix-blend-screen sm:h-[20rem] sm:w-[20rem] lg:h-[25rem] lg:w-[25rem]"
+          />
+        </div>
+      ) : null}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:52px_52px] opacity-35" />
 
       {ambientStars.map((star, index) => {
@@ -128,21 +143,19 @@ const ConstellationBackground = () => {
             }}
           >
             <div
-              className={`absolute left-1/2 top-1/2 rounded-full border transition-all duration-500 ${
-                isActive
-                  ? 'h-14 w-14 -translate-x-1/2 -translate-y-1/2 border-accent2/70 bg-accent2/10 shadow-[0_0_28px_rgba(181,159,119,0.22)]'
-                  : 'h-7 w-7 -translate-x-1/2 -translate-y-1/2 border-white/10'
-              }`}
+              className={`absolute left-1/2 top-1/2 rounded-full border transition-all duration-500 ${isActive
+                ? 'h-14 w-14 -translate-x-1/2 -translate-y-1/2 border-accent2/70 bg-accent2/10 shadow-[0_0_28px_rgba(181,159,119,0.22)]'
+                : 'h-7 w-7 -translate-x-1/2 -translate-y-1/2 border-white/10'
+                }`}
             />
             <div
-              className={`relative z-10 rounded-full border ${
-                isActive ? 'border-accent bg-accent2/80' : 'border-white/30 bg-white/75'
-              }`}
+              className={`relative z-10 rounded-full border ${isActive ? 'border-accent bg-accent2/80' : 'border-white/30 bg-white/75'
+                }`}
               style={{ width: isActive ? 11 : 8, height: isActive ? 11 : 8 }}
             />
             {isActive ? (
               <div className="absolute left-4 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-accent2/35 bg-ink/80 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-accent2 shadow-lg backdrop-blur md:left-5 md:px-3 md:py-1.5 md:text-[10px] md:tracking-[0.26em]">
-                You Are Here • {star.label}
+                You Are Here / {star.label}
               </div>
             ) : null}
           </div>
@@ -155,3 +168,8 @@ const ConstellationBackground = () => {
 };
 
 export default ConstellationBackground;
+
+
+
+
+

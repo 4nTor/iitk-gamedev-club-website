@@ -9,6 +9,7 @@ const CursorFx = () => {
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false, interactive: false, pressed: false });
   const [shots, setShots] = useState([]);
   const [impacts, setImpacts] = useState([]);
+  const [zoomScale, setZoomScale] = useState(1);
   const timersRef = useRef([]);
 
   useEffect(() => {
@@ -17,6 +18,27 @@ const CursorFx = () => {
     syncEnabled();
     media.addEventListener('change', syncEnabled);
     return () => media.removeEventListener('change', syncEnabled);
+  }, []);
+
+  useEffect(() => {
+    const viewport = window.visualViewport;
+
+    const updateZoomScale = () => {
+      const ratio = window.devicePixelRatio || 1;
+      const viewportScale = viewport?.scale || 1;
+      setZoomScale(1 / (ratio * viewportScale));
+    };
+
+    updateZoomScale();
+    window.addEventListener('resize', updateZoomScale);
+    viewport?.addEventListener('resize', updateZoomScale);
+    viewport?.addEventListener('scroll', updateZoomScale);
+
+    return () => {
+      window.removeEventListener('resize', updateZoomScale);
+      viewport?.removeEventListener('resize', updateZoomScale);
+      viewport?.removeEventListener('scroll', updateZoomScale);
+    };
   }, []);
 
   useEffect(() => {
@@ -93,6 +115,7 @@ const CursorFx = () => {
           style={{
             left: shot.x,
             top: shot.y,
+            '--cursor-zoom-scale': zoomScale,
           }}
         />
       ))}
@@ -101,14 +124,22 @@ const CursorFx = () => {
         <div
           key={impact.id}
           className={`cursor-impact ${impact.interactive ? 'cursor-impact--interactive' : ''}`}
-          style={{ left: impact.x, top: impact.y }}
+          style={{
+            left: impact.x,
+            top: impact.y,
+            '--cursor-zoom-scale': zoomScale,
+          }}
         />
       ))}
 
       {cursor.visible ? (
         <div
           className={`site-cursor ${cursor.interactive ? 'site-cursor--interactive' : ''} ${cursor.pressed ? 'site-cursor--pressed' : ''}`}
-          style={{ left: cursor.x, top: cursor.y }}
+          style={{
+            left: cursor.x,
+            top: cursor.y,
+            '--cursor-zoom-scale': zoomScale,
+          }}
         >
           <span className="site-cursor__ring" />
           <span className="site-cursor__dot" />
@@ -121,3 +152,4 @@ const CursorFx = () => {
 };
 
 export default CursorFx;
+

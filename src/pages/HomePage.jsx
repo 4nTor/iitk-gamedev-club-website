@@ -61,34 +61,35 @@ const HomePage = () => {
         <h2 className="mb-5 text-2xl font-semibold">About Us</h2>
         <Card className="space-y-5 text-slate-300 hover:translate-y-0 hover:border-white/10 hover:shadow-lg">
           <p>
-            Game development has evolved tremendously over the years, transforming from simple pixel-based games to
-            complex, immersive experiences. Today, game development encompasses various domains, each crucial to
-            creating engaging and visually stunning games. From game design, which lays the foundation for gameplay
-            mechanics, to programming that brings these ideas to life, every aspect is vital. Shaders add depth and
-            realism to game graphics, enhancing visual appeal, while game AI creates intelligent, adaptive characters
-            that challenge and entertain players. Sound design and narrative writing further enrich the gaming
-            experience, making game development a multidisciplinary field that blends art and technology.
+            The Game Development Club at IIT Kanpur began as a Stamatics computer graphics project, driven by a small
+            group of students interested in graphics and interactive systems. Over time, this initiative evolved into
+            a full-fledged club, with its first official session as a society held in January 2020, marking the
+            beginning of a more structured and growing community around game development.
           </p>
           <p>
-            The Game Development Club at IIT Kanpur actively fosters this creativity and innovation. The club conducts
-            regular workshops and bootcamps, welcoming newcomers to explore the world of game development. Through
-            brainstorming sessions and collaborative game-making activities, members refine their skills and bring
-            their ideas to life. The club also participates in various game jams, where members compete and win
-            prizes, demonstrating their talent on national and international platforms. The club also proudly
-            represents IIT Kanpur in the Inter-IIT Tech Meet, where last year, the team secured a bronze medal,
-            showcasing their game development prowess.
+            Since then, the club has expanded significantly, both in scope and participation. From focusing primarily
+            on graphics, it has grown into a multidisciplinary space covering game design, programming, art,
+            animation, AI, and storytelling. On November 9, 2022, the club further strengthened its identity within
+            the institute ecosystem, establishing itself as a key hub for creative and technical collaboration.
           </p>
           <p>
-            Looking forward, the Game Development Club is now venturing into the exciting realms of the metaverse,
-            exploring the potential of AR and VR technologies. By developing games that push the boundaries of
-            reality, the club is at the forefront of this emerging field, offering members the chance to be part of
-            the future of game development.
+            The club regularly conducts workshops, bootcamps, and game jams, enabling students to learn by building
+            and experimenting. Members actively participate in national and international game jams and represent IIT
+            Kanpur at platforms like the Inter-IIT Tech Meet, where the club has consistently performed well.
+            Notably, the club secured 2nd Runner-Up positions twice, with Ignition Evade at Inter-IIT Tech Meet 12.0
+            and Cell-O at Inter-IIT Tech Meet 14.0, reflecting its strong development and teamwork.
+          </p>
+          <p>
+            Today, the club is moving beyond traditional game development into areas such as AR, VR, and interactive
+            simulations, reflecting both industry trends and research directions. By fostering collaboration across
+            disciplines and encouraging hands-on creation, the Game Development Club aims to provide a space where
+            students can explore, innovate, and build meaningful interactive experiences.
           </p>
         </Card>
       </ScrollReveal>
 
       <ScrollReveal as="section" distance={24}>
-        <h2 className="mb-5 text-2xl font-semibold">Inter IIT TechMeet Winners</h2>
+        <h2 className="mb-5 text-2xl font-semibold">Inter IIT Podium Finishers</h2>
         <div className="grid gap-5 md:grid-cols-2">
           {games.map((game, index) => (
             <ScrollReveal key={game.title} delay={index * 110} distance={24}>
