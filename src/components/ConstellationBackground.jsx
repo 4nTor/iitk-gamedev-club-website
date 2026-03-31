@@ -98,7 +98,7 @@ const ConstellationBackground = () => {
           <img
             src="/images/logo.jpeg"
             alt=""
-            className="relative h-[18rem] w-[18rem] rounded-full border border-white/10 object-cover mix-blend-screen sm:h-[20rem] sm:w-[20rem] lg:h-[25rem] lg:w-[25rem]"
+            className="relative h-[17.5rem] w-[17.5rem] rounded-full border border-white/10 object-cover mix-blend-screen sm:h-[19.5rem] sm:w-[19.5rem] lg:h-[24.5rem] lg:w-[24.5rem]"
           />
         </div>
       ) : null}
@@ -168,6 +168,8 @@ const ConstellationBackground = () => {
 };
 
 export default ConstellationBackground;
+
+
 
 
 
