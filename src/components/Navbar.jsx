@@ -23,10 +23,10 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="mx-auto w-full max-w-7xl px-3 py-3 sm:px-6 lg:px-8">
-        <div className="rounded-[1.6rem] border border-white/10 bg-black/30 px-3 py-3 shadow-[0_14px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-4">
+      <nav className="mx-auto w-full max-w-7xl px-2 py-3 sm:px-6 lg:px-8">
+        <div className="rounded-[1.6rem] border border-white/10 bg-black/30 px-2 py-3 shadow-[0_14px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-4">
           <div className="flex items-center justify-between gap-3 xl:gap-6">
-            <NavLink to="/" className="min-w-0 flex items-center gap-3 leading-tight" onClick={() => setOpen(false)}>
+            <NavLink to="/" className="min-w-0 flex items-center gap-2 leading-tight sm:gap-3" onClick={() => setOpen(false)}>
               <div className="relative shrink-0">
                 <img
                   src="/images/logo.jpeg"
@@ -78,3 +78,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

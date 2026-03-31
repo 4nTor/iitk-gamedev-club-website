@@ -78,30 +78,25 @@ const ConstellationBackground = () => {
 
   const activeStar = useMemo(() => resolveActiveStar(location.pathname), [location.pathname]);
   const homeLogoOpacity = Math.max(0, 0.58 - scrollY / 900);
-  const homeLogoScale = 1;
 
   return (
     <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
       <div className="absolute inset-0 bg-space-gradient" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(181,159,119,0.12),transparent_24%),radial-gradient(circle_at_22%_30%,rgba(216,217,221,0.08),transparent_18%),radial-gradient(circle_at_76%_72%,rgba(181,159,119,0.08),transparent_18%)]" />
-      <img
-        src="/images/centaurus constellation.png"
-        alt=""
-        className="absolute left-1/2 top-1/2 h-[86vh] max-h-[960px] w-auto -translate-x-1/2 -translate-y-[44%] opacity-[0.16] mix-blend-screen"
-      />
-      {location.pathname === '/' ? (
-        <div
-          className="absolute left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2"
-          style={{ opacity: homeLogoOpacity, transform: `translate(-50%, -50%) scale(${homeLogoScale})` }}
-        >
-          <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(181,159,119,0.26),transparent_65%)] blur-2xl" />
-          <img
-            src="/images/logo.jpeg"
-            alt=""
-            className="relative h-[17.5rem] w-[17.5rem] rounded-full border border-white/10 object-cover mix-blend-screen sm:h-[19.5rem] sm:w-[19.5rem] lg:h-[24.5rem] lg:w-[24.5rem]"
-          />
-        </div>
-      ) : null}
+
+      <div className="absolute left-1/2 top-1/2 h-[86vh] max-h-[960px] aspect-[1024/1536] -translate-x-1/2 -translate-y-[44%]">
+        <img src="/images/centaurus constellation.png" alt="" className="h-full w-full object-contain opacity-[0.16] mix-blend-screen" />
+
+        {location.pathname === '/' ? (
+          <div className="absolute left-[50%] top-[44.3%] aspect-square w-[92%] -translate-x-1/2 -translate-y-1/2" style={{ opacity: homeLogoOpacity }}>
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(181,159,119,0.26),transparent_65%)] blur-2xl" />
+            <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10 mix-blend-screen">
+              <img src="/images/logo.jpeg" alt="" className="h-full w-full object-cover object-center" />
+            </div>
+          </div>
+        ) : null}
+      </div>
+
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:52px_52px] opacity-35" />
 
       {ambientStars.map((star, index) => {
@@ -168,7 +163,6 @@ const ConstellationBackground = () => {
 };
 
 export default ConstellationBackground;
-
 
 
 
