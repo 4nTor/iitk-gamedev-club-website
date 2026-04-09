@@ -50,30 +50,40 @@ const PersonHoverCard = ({ name, post, photo, linkedin, github, instagram, email
   </Card>
 );
 
-const SecretaryHoverCard = ({ name, post, photo, linkedin, github, instagram, email }) => (
-  <div className="group relative mx-auto aspect-square w-32 overflow-hidden rounded-full border border-slate-700 bg-panel/90 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-glow sm:w-36 lg:w-40 xl:w-44">
-    <img
-      src={normalizePhotoPath(photo)}
-      alt={name}
-      loading="lazy"
-      className="h-full w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-50 group-focus-within:scale-105 group-focus-within:brightness-50"
-    />
-    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,11,0.08),rgba(10,10,11,0.82))] transition duration-300 group-hover:opacity-90 group-focus-within:opacity-90" />
-    <div className="absolute inset-x-0 bottom-0 z-[1] px-5 pb-6 text-center transition duration-300 group-hover:opacity-0 group-focus-within:opacity-0">
-      <h3 className="text-lg font-semibold text-white">{name}</h3>
-      <p className="mt-1 text-xs uppercase tracking-[0.14em] text-accent">{post}</p>
-    </div>
-    <div className="absolute inset-0 z-10 flex flex-col items-center justify-end bg-black/40 p-6 text-center opacity-0 transition duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
-      <p className="mb-3 text-xs uppercase tracking-[0.18em] text-slate-400">Connect</p>
-      <div className="flex flex-col gap-2">
-        <ContactItem label="LinkedIn" value={linkedin} href={linkedin} />
-        <ContactItem label="GitHub" value={github} href={github} />
-        <ContactItem label="Instagram" value={instagram} href={instagram} />
-        <ContactItem label="Email" value={email} href={email ? `mailto:${email}` : ''} />
+const SecretaryHoverCard = ({ name, post, photo, linkedin, github, instagram, email, open, onToggle }) => {
+  const isOpen = open;
+
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className="group relative mx-auto aspect-square w-32 overflow-hidden rounded-full border border-slate-700 bg-panel/90 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-glow sm:w-36 lg:w-40 xl:w-44"
+      aria-expanded={isOpen}
+      aria-label={`${isOpen ? 'Hide' : 'Show'} contact links for ${name}`}
+    >
+      <img
+        src={normalizePhotoPath(photo)}
+        alt={name}
+        loading="lazy"
+        className={`h-full w-full object-cover transition duration-300 ${(isOpen ? 'scale-105 brightness-50' : '')} group-hover:scale-105 group-hover:brightness-50`}
+      />
+      <div className={`absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,11,0.08),rgba(10,10,11,0.82))] transition duration-300 ${(isOpen ? 'opacity-90' : '')} group-hover:opacity-90`} />
+      <div className={`absolute inset-x-0 bottom-0 z-[1] px-5 pb-6 text-center transition duration-300 ${(isOpen ? 'opacity-0' : '')} group-hover:opacity-0`}>
+        <h3 className="text-lg font-semibold text-white">{name}</h3>
+        <p className="mt-1 text-xs uppercase tracking-[0.14em] text-accent">{post}</p>
       </div>
-    </div>
-  </div>
-);
+      <div className={`absolute inset-0 z-10 flex flex-col items-center justify-end bg-black/40 p-4 text-center transition duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100`}>
+        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-slate-400">Connect</p>
+        <div className="flex flex-col gap-2" onClick={(event) => event.stopPropagation()}>
+          <ContactItem label="LinkedIn" value={linkedin} href={linkedin} />
+          <ContactItem label="GitHub" value={github} href={github} />
+          <ContactItem label="Instagram" value={instagram} href={instagram} />
+          <ContactItem label="Email" value={email} href={email ? `mailto:${email}` : ''} />
+        </div>
+      </div>
+    </button>
+  );
+};
 
 const getTenureStart = (tenure = '') => {
   const match = tenure.match(/(\d{4})/);
@@ -84,6 +94,7 @@ const TeamPage = () => {
   const [coordinators, setCoordinators] = useState([]);
   const [secretaries, setSecretaries] = useState([]);
   const [pastCoordinators, setPastCoordinators] = useState([]);
+  const [openSecretary, setOpenSecretary] = useState('');
 
   useEffect(() => {
     fetchCsv('/data/team.csv')
@@ -147,6 +158,8 @@ const TeamPage = () => {
                 github={secretary.github}
                 instagram={secretary.instagram}
                 email={secretary.email}
+                open={openSecretary === secretary.name}
+                onToggle={() => setOpenSecretary((current) => (current === secretary.name ? '' : secretary.name))}
               />
             ))}
           </div>

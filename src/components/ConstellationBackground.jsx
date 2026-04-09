@@ -77,21 +77,21 @@ const ConstellationBackground = () => {
   }, []);
 
   const activeStar = useMemo(() => resolveActiveStar(location.pathname), [location.pathname]);
-  const homeLogoOpacity = Math.max(0, 0.58 - scrollY / 900);
+  const homeLogoOpacity = Math.max(0, 1 - scrollY / 700);
 
   return (
     <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
       <div className="absolute inset-0 bg-space-gradient" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(181,159,119,0.12),transparent_24%),radial-gradient(circle_at_22%_30%,rgba(216,217,221,0.08),transparent_18%),radial-gradient(circle_at_76%_72%,rgba(181,159,119,0.08),transparent_18%)]" />
 
-      <div className="absolute left-1/2 top-1/2 h-[86vh] max-h-[960px] aspect-[1024/1536] -translate-x-1/2 -translate-y-[44%]">
+      <div className="absolute left-1/2 top-1/2 h-[94vh] max-h-[1100px] aspect-[1024/1536] -translate-x-1/2 -translate-y-[44%]">
         <img src="/images/centaurus constellation.png" alt="" className="h-full w-full object-contain opacity-[0.16] mix-blend-screen" />
 
         {location.pathname === '/' ? (
-          <div className="absolute left-[50%] top-[44.3%] aspect-square w-[92%] -translate-x-1/2 -translate-y-1/2" style={{ opacity: homeLogoOpacity }}>
+          <div className="absolute left-[50%] top-[44.5%] aspect-square w-[95%] -translate-x-1/2 -translate-y-1/2" style={{ opacity: homeLogoOpacity }}>
             <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(181,159,119,0.26),transparent_65%)] blur-2xl" />
-            <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10 mix-blend-screen">
-              <img src="/images/logo.jpeg" alt="" className="h-full w-full object-cover object-center" />
+            <div className="relative h-full w-full overflow-hidden rounded-full border border-white/15">
+              <img src="/images/logo_noback.png" alt="" className="absolute inset-0 h-full w-full scale-[0.94] object-contain object-center" />
             </div>
           </div>
         ) : null}
@@ -163,6 +163,25 @@ const ConstellationBackground = () => {
 };
 
 export default ConstellationBackground;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

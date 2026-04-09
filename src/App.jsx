@@ -21,9 +21,9 @@ const App = () => {
     <div className="relative min-h-screen overflow-x-hidden bg-ink text-slate-100">
       <ConstellationBackground />
       <CursorFx />
-      <div className="relative z-10">
+      <div className="relative z-10 flex min-h-screen flex-col">
         <Navbar onSecretTrigger={() => setGameOpen(true)} />
-        <main className="mx-auto w-full max-w-7xl px-4 pb-16 pt-32 sm:px-6 lg:px-8">
+        <main className="mx-auto flex-1 w-full max-w-7xl px-4 pb-16 pt-32 sm:px-6 lg:px-8">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/games" element={<GamesPage />} />
@@ -45,3 +45,4 @@ const App = () => {
 };
 
 export default App;
+
